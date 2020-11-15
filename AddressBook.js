@@ -108,7 +108,13 @@ class AddressBook{
     }
     //addContact Method
     addContact(newContact){
+        //UC7 Ensuring No two contacts of the same name exists in the same addressBook
+        if(this.contactList.filter(contact=>contact.firstName==newContact.firstName).reduce((count)=>count+=1,0)==0){
             this.contactList.push(newContact);
+        }
+        else{
+            console.log("Already Exists");
+        }
         }
 }
 
