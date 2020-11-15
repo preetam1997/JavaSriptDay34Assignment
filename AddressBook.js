@@ -145,4 +145,3 @@ try {
 //Displaying List
 console.log(add1.contactList);
 
-
