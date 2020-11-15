@@ -98,22 +98,29 @@ try {
 } catch (error) {
     console.error(error);
 }
-
-//AddressBook
+//AddressBook Class
 class AddressBook{
-    //constructor
     constructor(...params){
         this.addressBookId = params[0];
         this.contactList = params[1];
     }
-    //addContact method
+    //addContact Method
     addContact(newContact){
-        if(this.contactList.filter(contact=>contact.firstName==newContact.firstName).reduce((count)=>count+=1,0)==0){
             this.contactList.push(newContact);
         }
-        else{
-            console.log("Already Exists");
-        }
-        
-    }
 }
+
+//Creating New AddressBook
+let add1 = new AddressBook("add1",new Array());
+//Adding Contacts
+try {
+    add1.addContact(new Contact(1,"add1","Pop","Qpr","India","Chaiwasa","Jharkhand","132 103","12 0123456789","abc@xyz.com"));
+    add1.addContact(new Contact(2,"add1","Preetam","Qpr","India","Bhagalpur","Bihar","132 103","12 0123456789","abc@xyz.com"));
+    add1.addContact(new Contact(3,"add1","Parasit","Qpr","India","kolkata","WestBengal","132 103","12 0123456789","abc@xyz.com"));
+
+} catch (error) {
+    console.error(error);
+}
+//Displaying Contact Array
+console.log(add1.contactList);
+
