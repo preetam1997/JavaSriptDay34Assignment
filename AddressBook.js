@@ -189,4 +189,36 @@ let filteredArray = searchPersonsByCityOrState(add1,"state","Bihar");
 console.log(filteredArray);
 console.log("=================================");
 
+//UC9 Ability to view Persons by City or State
+function viewPersonsByCityOrState(addressBook,...params){
+    let nameToCityOrStateMap = new Map();
+    switch(params[0]){
+        case "state":
+            for(let i = 0;i<addressBook.contactList.length;i++){
+                temp = addressBook.contactList[i];
+                if(nameToCityOrStateMap.has(temp.state)){
+                    nameToCityOrStateMap.get(temp.state).push(temp.firstName);
+                }
+                else{
+                    nameToCityOrStateMap.set(temp.state,[temp.firstName]);
+                }
+            }
+            return nameToCityOrStateMap;
+
+        case "city":
+            for(let i = 0;i<addressBook.contactList.length;i++){
+                temp = addressBook.contactList[i];
+                if(nameToCityOrStateMap.has(temp.city)){
+                    nameToCityOrStateMap.get(temp.city).push(temp.firstName);
+                }
+                else{
+                    nameToCityOrStateMap.set(temp.city,[temp.firstName]);
+                }
+            }
+            return nameToCityOrStateMap;
+    }
+}
+//displaying Map
+console.log(viewPersonsByCityOrState(add1,"city"));
+console.log("=================================");
 
