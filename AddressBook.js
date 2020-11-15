@@ -1,3 +1,4 @@
+//UC1 Ability to create a Address Book Contact
 //Contact class 
 class Contact{
     //constructor
@@ -15,6 +16,7 @@ class Contact{
     }
 
     // getters and setters
+    //UC2 Ability to ensure Valid Contacts are Added
     get firstName(){return this._firstName;}
     set firstName(firstName){
         let firstNameRegex = RegExp("^([A-Z]{1})([a-z]{2,})$");
@@ -113,6 +115,7 @@ class AddressBook{
 //Creating New AddressBook
 let add1 = new AddressBook("add1",new Array());
 //Adding Contacts
+//UC3 Ability To Add to Address Book Array
 try {
     add1.addContact(new Contact(1,"add1","Pop","Qpr","India","Chaiwasa","Jharkhand","132 103","12 0123456789","abc@xyz.com"));
     add1.addContact(new Contact(2,"add1","Preetam","Qpr","India","Bhagalpur","Bihar","132 103","12 0123456789","abc@xyz.com"));
@@ -123,4 +126,23 @@ try {
 }
 //Displaying Contact Array
 console.log(add1.contactList);
+console.log("=================================");
+
+//UC4 Ability to find existing contact person using their name and edit it
+//function to find and edit using name
+function findAndEditUsingName(addressBook,name,newName){
+    addressBook.contactList.filter(contact=>contact.firstName==name).forEach(contact => {
+        contact.firstName = newName;
+    });
+}
+
+//calling the function
+try {
+    findAndEditUsingName(add1,"Pop","Me");
+} catch (error) {
+    console.error(error);
+}
+//Displaying List
+console.log(add1.contactList);
+
 
