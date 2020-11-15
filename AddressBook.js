@@ -22,7 +22,11 @@ class Contact{
         }
 
     get lastName(){return this._lastName;}
-    set lastName(lastName){this._lastName = lastName;}
+    set lastName(lastName){ let lastNameRegex = RegExp("^([A-Z]{1})([a-z]{2,})$");
+    if(lastNameRegex.test(lastName)){
+        this._lastName = lastName;
+        }
+        else throw "Last Name Incorrect";}
 
     toString(){
         return "id = "+this.contactId+", "+"firstName = "+this.firstName+", "+"lastName = "+this.lastName+", "+"address = "+this.address+", "+"city = "+this.city+", "+"state = "+this.state+", "+"zip = "+this.zip+", "+"phoneNumber = "+this.phoneNumber+", "+"email = "+this.email;
@@ -30,7 +34,7 @@ class Contact{
 }
 
 try {
-    new Contact(1,"add1","P","Q","R","S","T","123","123","abc@xyz.com");
+    new Contact(1,"add1","Pop","Q","R","S","T","123","123","abc@xyz.com");
 } catch (error) {
     console.error(error);
 }
