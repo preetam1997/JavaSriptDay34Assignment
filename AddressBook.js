@@ -145,3 +145,14 @@ try {
 //Displaying List
 console.log(add1.contactList);
 
+//UC5 Delete By Name
+//function to delete using name
+function DeleteUsingName(addressBook,name){
+    index = addressBook.contactList.findIndex(contact=>contact.firstName==name);
+    addressBook.contactList.splice(index,1);
+}
+// function call
+DeleteUsingName(add1,"Pop");
+//displaying List
+console.log(add1.contactList);
+
