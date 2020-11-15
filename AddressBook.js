@@ -126,6 +126,7 @@ try {
     add1.addContact(new Contact(1,"add1","Pop","Qpr","India","Chaiwasa","Jharkhand","132 103","12 0123456789","abc@xyz.com"));
     add1.addContact(new Contact(2,"add1","Preetam","Qpr","India","Bhagalpur","Bihar","132 103","12 0123456789","abc@xyz.com"));
     add1.addContact(new Contact(3,"add1","Parasit","Qpr","India","kolkata","WestBengal","132 103","12 0123456789","abc@xyz.com"));
+    add1.addContact(new Contact(4,"add1","Shivom","Qpr","India","Bhagalpur","Bihar","132 103","12 0123456789","abc@xyz.com"));
 
 } catch (error) {
     console.error(error);
@@ -172,3 +173,20 @@ function getCount(addressBook){
 //displaying Count
 console.log(getCount(add1));
 console.log("=================================");
+
+//UC8 Ability to search Person in a particular City or State
+function searchPersonsByCityOrState(addressBook,...params){
+    switch(params[0]){
+        case "state":
+            return addressBook.contactList.filter(contact=>contact.state==params[1]);
+        case "city":
+            return addressBook.contactList.filter(contact=>contact.city==params[1]);
+    }
+}
+//function Call
+let filteredArray = searchPersonsByCityOrState(add1,"state","Bihar");
+//displaying filtered Array 
+console.log(filteredArray);
+console.log("=================================");
+
+
