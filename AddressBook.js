@@ -1,4 +1,6 @@
+//Contact class 
 class Contact{
+    //constructor
     constructor(...params){
         this.contactId = params[0];
         this.addressBookId = params[1];
@@ -12,6 +14,7 @@ class Contact{
         this.email = params[9];
     }
 
+    // getters and setters
     get firstName(){return this._firstName;}
     set firstName(firstName){
         let firstNameRegex = RegExp("^([A-Z]{1})([a-z]{2,})$");
@@ -84,14 +87,33 @@ class Contact{
         else throw "Email Incorrect";
     }
 
-
+    //toString method
     toString(){
         return "id = "+this.contactId+", "+"firstName = "+this.firstName+", "+"lastName = "+this.lastName+", "+"address = "+this.address+", "+"city = "+this.city+", "+"state = "+this.state+", "+"zip = "+this.zip+", "+"phoneNumber = "+this.phoneNumber+", "+"email = "+this.email;
     }
 }
-
+// creating new Contact Object
 try {
     new Contact(1,"add1","Pop","Qpr","eqrt","Sqer","Tury","132 103","12 0123456789","abc@xyz.com");
 } catch (error) {
     console.error(error);
+}
+
+//AddressBook
+class AddressBook{
+    //constructor
+    constructor(...params){
+        this.addressBookId = params[0];
+        this.contactList = params[1];
+    }
+    //addContact method
+    addContact(newContact){
+        if(this.contactList.filter(contact=>contact.firstName==newContact.firstName).reduce((count)=>count+=1,0)==0){
+            this.contactList.push(newContact);
+        }
+        else{
+            console.log("Already Exists");
+        }
+        
+    }
 }
