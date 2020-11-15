@@ -144,6 +144,7 @@ try {
 }
 //Displaying List
 console.log(add1.contactList);
+console.log("=================================");
 
 //UC5 Delete By Name
 //function to delete using name
@@ -155,4 +156,13 @@ function DeleteUsingName(addressBook,name){
 DeleteUsingName(add1,"Pop");
 //displaying List
 console.log(add1.contactList);
+console.log("=================================");
 
+//UC6 Ability To Find The Number Of Contacts in an AddressBook
+//function to count the number of contacts in an addressBook
+function getCount(addressBook){
+    return addressBook.contactList.reduce((count)=>count+=1,0);
+}
+//displaying Count
+console.log(getCount(add1));
+console.log("=================================");
