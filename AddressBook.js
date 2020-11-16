@@ -260,3 +260,15 @@ function countByStateOrCity(...params){
 
 //displaying result
 console.log(countByStateOrCity(add1,"city"));
+console.log("=================================");
+
+//UC11 Ability to sort the entries in the address book alphabetically by Person’s name
+
+function sortByName(addressBook){
+    addressBook.contactList.sort((a,b)=>(a.firstName>b.firstName)?1:-1);
+}
+sortByName(add1);
+add1.contactList.forEach(contact => {
+    console.log(contact.toString());
+});
+console.log("=================================");
