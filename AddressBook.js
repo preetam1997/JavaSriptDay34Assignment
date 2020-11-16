@@ -218,7 +218,45 @@ function viewPersonsByCityOrState(addressBook,...params){
             return nameToCityOrStateMap;
     }
 }
+
 //displaying Map
-console.log(viewPersonsByCityOrState(add1,"city"));
+console.log(viewPersonsByCityOrState(add1,"state"));
 console.log("=================================");
 
+//UC10 Ability to get number of contact persons i.e. count by City or State
+//function
+function countByStateOrCity(...params){
+    switch(params[1]){
+        case "state":
+            let trackingArr = new Array();
+            return params[0].contactList.filter((contact)=>{
+            if(!trackingArr.includes(contact.state)){
+                trackingArr.push(contact.state);
+                return true;
+            }    
+            else{
+                return false;
+            }
+            }).map((contact)=>{
+                return {key:contact.state,value:add1.contactList.filter(contact1=>contact1.state==contact.state).reduce((count)=>count+=1,0)};
+            });
+
+        case "city":
+            let trackingArr1 = new Array();
+            return params[0].contactList.filter((contact)=>{
+            if(!trackingArr1.includes(contact.city)){
+                trackingArr1.push(contact.city);
+                return true;
+            }    
+            else{
+                return false;
+            }
+            }).map((contact)=>{
+                return {key:contact.city,value:add1.contactList.filter(contact1=>contact1.city==contact.city).reduce((count)=>count+=1,0)};
+            });
+            
+    }
+}
+
+//displaying result
+console.log(countByStateOrCity(add1,"city"));
