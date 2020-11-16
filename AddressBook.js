@@ -263,6 +263,7 @@ console.log(countByStateOrCity(add1,"city"));
 console.log("=================================");
 
 //UC11 Ability to sort the entries in the address book alphabetically by Person’s name
+//function
 function sortByName(addressBook){
     addressBook.contactList.sort((a,b)=>(a.firstName>b.firstName)?1:-1);
 }
@@ -275,6 +276,7 @@ add1.contactList.forEach(contact => {
 console.log("=================================");
 
 //UC12 Ability to sort the entries in the address book by City, State, or Zip
+//function
 function sortByParameter(addressBook,parameter){
     switch(parameter){
         case "city":
@@ -288,8 +290,9 @@ function sortByParameter(addressBook,parameter){
             break;
     }
 }
-
+//function call
 sortByParameter(add1,"zip");
+//displaying result
 add1.contactList.forEach(contact => {
     console.log(contact.toString());
 });
