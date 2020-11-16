@@ -124,9 +124,9 @@ let add1 = new AddressBook("add1",new Array());
 //UC3 Ability To Add to Address Book Array
 try {
     add1.addContact(new Contact(1,"add1","Pop","Qpr","India","Chaiwasa","Jharkhand","132 103","12 0123456789","abc@xyz.com"));
-    add1.addContact(new Contact(2,"add1","Preetam","Qpr","India","Bhagalpur","Bihar","132 103","12 0123456789","abc@xyz.com"));
-    add1.addContact(new Contact(3,"add1","Parasit","Qpr","India","kolkata","WestBengal","132 103","12 0123456789","abc@xyz.com"));
-    add1.addContact(new Contact(4,"add1","Shivom","Qpr","India","Bhagalpur","Bihar","132 103","12 0123456789","abc@xyz.com"));
+    add1.addContact(new Contact(2,"add1","Preetam","Qpr","India","Bhagalpur","Bihar","232 103","12 0123456789","abc@xyz.com"));
+    add1.addContact(new Contact(3,"add1","Parasit","Qpr","India","kolkata","WestBengal","332 103","12 0123456789","abc@xyz.com"));
+    add1.addContact(new Contact(4,"add1","Shivom","Qpr","India","Bhagalpur","Bihar","432 403","12 0123456789","abc@xyz.com"));
 
 } catch (error) {
     console.error(error);
@@ -263,12 +263,34 @@ console.log(countByStateOrCity(add1,"city"));
 console.log("=================================");
 
 //UC11 Ability to sort the entries in the address book alphabetically by Person’s name
-
 function sortByName(addressBook){
     addressBook.contactList.sort((a,b)=>(a.firstName>b.firstName)?1:-1);
 }
+//function call
 sortByName(add1);
+//displaying result
 add1.contactList.forEach(contact => {
     console.log(contact.toString());
 });
 console.log("=================================");
+
+//UC12 Ability to sort the entries in the address book by City, State, or Zip
+function sortByParameter(addressBook,parameter){
+    switch(parameter){
+        case "city":
+            addressBook.contactList.sort((a,b)=>(a.city>b.city)?1:-1);
+            break;
+        case "state":
+            addressBook.contactList.sort((a,b)=>(a.state>b.state)?1:-1);
+            break;
+        case "zip":
+            addressBook.contactList.sort((a,b)=>(a.zip>b.zip)?1:-1);
+            break;
+    }
+}
+
+sortByParameter(add1,"zip");
+add1.contactList.forEach(contact => {
+    console.log(contact.toString());
+});
+    
